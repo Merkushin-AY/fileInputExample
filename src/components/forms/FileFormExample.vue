@@ -5,7 +5,7 @@
         <BaseForm
             url="/test-api"
         >
-            <BaseFileInput name="pictures" accept=".jpg,.jpeg,.png" :max-file-size="1000000"/>
+            <BaseFileInput name="pictures" accept=".jpg,.jpeg,.png" :max-file-size="100000000"/>
             <BaseButton class="fileFormExample_button" type="submit">Submit</BaseButton>
         </BaseForm>
     </div>

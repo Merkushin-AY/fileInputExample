@@ -17,7 +17,11 @@
         <BaseFormError v-for="(errorText, idx) in errors" :key="idx">
             {{ errorText }}
         </BaseFormError>
-        <div class="fileInput_previews">
+        <TransitionGroup
+            name="list-up"
+            tag="div"
+            class="fileInput_previews"
+        >
             <BaseFilePreview
                 v-for="(file, index) in files"
                 :key="file.fileId"
@@ -26,7 +30,7 @@
                 @delete="deleteFile(index)"
                 @move="moveFile(index, $event)"
             />
-        </div>
+        </TransitionGroup>
     </div>
 </template>
 
