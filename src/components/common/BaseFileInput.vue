@@ -116,8 +116,15 @@
                     const fileExist = this.files.some((item) => item.fileId === file.fileId);
                     if (fileExist) continue;
 
+                    // Проверка на размер
                     if (!this.checkFileSize(file)) {
                         this.$set(this.errors, 'maxSize', 'Максимальный размер файла: ' + this.formattedMaxFileSize);
+                        continue;
+                    }
+
+                    // Проверка на картиночность
+                    if (!this.checkFileFormat(file)) {
+                        this.$set(this.errors, 'format', 'Требую картинки!');
                         continue;
                     }
 
@@ -150,6 +157,10 @@
 
             checkFileSize(file) {
                 return !this.maxFileSize || file.size <= this.maxFileSize
+            },
+
+            checkFileFormat(file) {
+                return file.type.includes('image/');
             },
 
             deleteFile(fileIndex) {
